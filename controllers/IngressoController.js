@@ -1,4 +1,5 @@
 import Ingresso from "../models/Ingresso.js";
+import Compra from "../models/Compra.js";
 
 class IngressoController {
   index = async function (req, res) {
@@ -80,32 +81,50 @@ class IngressoController {
 
   //Compra/devolução dos ingressos
 
-  comprar = async function (req, res) {
-    const { id } = req.parms;
-    const { quantidade } = req.body;
-    const ingresso = await Ingresso.findAll({
-      where: { id },
+  comprar = async (req, res) => {
+    const { id } = req.params;
+
+    const ingressos = await Ingresso.findAll({
+      where: {
+        evento_id: id,
+        status: 1,
+      },
+      order: [["preco", "ASC"]],
     });
 
+    res.render("ingresso/comprar", { ingressos, evento_id: id });
+  };
+
+  processarCompra = async (req, res) => {
+    const { tipo, quantidade } = req.body;
+
+    const ingresso = await Ingresso.findOne({
+      where: { id: tipo },
+    });
+
+    if (!ingresso) {
+      return res.status(404).send("Ingresso não encontrado.");
+    }
+
     if (ingresso.quantidade < quantidade) {
-      return req.flash("error_msg", "Quantidade ingressos é insuficiente");
+      return res
+        .status(400)
+        .send("Quantidade insuficiente de ingressos disponíveis.");
     }
 
     await Ingresso.update(
       { quantidade: ingresso.quantidade - quantidade },
-      { where: { id } }
+      { where: { id: tipo } }
     );
 
     await Compra.create({
-      ingresso_id: id,
-      usuario_id: req.user.id,
+      ingresso_id: tipo,
+      usuario_id: req.user?.id || null,
       quantidade,
-      data_compra: new Date(),
-      status: "comprado",
     });
 
     req.flash("success_msg", "Ingressos comprados com sucesso!");
-    res.redirect(`/ingresso/${ingresso.evento_id}`);
+    res.redirect("/admin");
   };
 }
 

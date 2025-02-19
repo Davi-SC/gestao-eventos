@@ -1,0 +1,33 @@
+<div class="container-sm">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <h3 class="navbar-brand">Meus Ingressos</h3>
+        </div>
+    </nav>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Data</th>
+                <th>Tipo de Ingresso</th>
+                <th>Preço Unitário</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each compras}}
+                <tr>
+                    <td>{{ingresso.evento.nome}}</td>
+                    <td>{{ingresso.evento.data_evento}}</td>
+                    <td>{{ingresso.tipo}}</td>
+                    <td>R$ {{ingresso.preco}}</td>
+                    <td>{{quantidade}}</td>
+                </tr>
+            {{else}}
+                <tr>
+                    <td colspan="6" class="text-center">Você ainda não comprou nenhum ingresso.</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

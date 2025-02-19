@@ -63,9 +63,6 @@ app.get("/", (req, res) => {
 import admin from "./routes/admin.js";
 app.use("/admin", admin);
 
-import produto from "./routes/produto.js";
-app.use("/produto", produto);
-
 import pessoa from "./routes/pessoa.js";
 app.use("/pessoa", pessoa);
 

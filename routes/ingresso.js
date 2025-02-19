@@ -15,11 +15,8 @@ router.get("/editar/:id", logado, IngressoController.editar);
 router.get("/excluir/:id", logado, IngressoController.excluir);
 
 //Rotas para compra/devolução de ingressos
-router.get("/comprar/:id", (req, res) => {
-  const { id } = req.params;
-  res.render("ingresso/comprar", { id });
-});
-router.post("/comprar/:id", logado, IngressoController.comprar);
+router.get("/comprar/:id", IngressoController.comprar);
+router.post("/comprar", IngressoController.processarCompra);
 // router.post("/devolver/:id", IngressoController.devolver);
 
 export default router;

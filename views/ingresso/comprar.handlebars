@@ -1,1 +1,36 @@
-<h1>criar formulario que mostre o tipo de ingresso, o preço e a quantidade deve ser preenchida pelo comprador</h1>
+<div class="container-sm">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <h3 class="navbar-brand">Comprar Ingressos</h3>
+        </div>
+    </nav>
+    <form id="compra" method="post" action="/ingresso/comprar">
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo de Ingresso</label>
+            <select id="tipo" name="tipo" class="form-select" required>
+                <option value="" disabled selected>Selecione um tipo de ingresso</option>
+                {{#each ingressos}}
+                    <option value="{{id}}" data-preco="{{preco}}">{{tipo}} - R$ {{preco}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="preco" class="form-label">Preço Unitário</label>
+            <input type="text" id="preco" class="form-control" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" id="quantidade" name="quantidade" class="form-control" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Comprar</button>
+    </form>
+</div>
+
+<script>
+    // Atualiza o preço quando o usuário seleciona um tipo de ingresso
+    document.getElementById("tipo").addEventListener("change", function () {
+        const selectedOption = this.options[this.selectedIndex];
+        const preco = selectedOption.getAttribute("data-preco");
+        document.getElementById("preco").value = `R$ ${preco}`;
+    });
+</script>
