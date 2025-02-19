@@ -1,0 +1,36 @@
+<div class="col-md-5 mx-auto shadow p-3">
+    <form method="post" action="/evento/cadastrar">
+        <fieldset>
+
+            <legend>Cadastro de Eventos</legend>
+
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="disabledTextInput" class="form-label">NOME</label>
+                    <input type="text" id="disabledTextInput" name="nome" class="form-control" required>
+                </div>
+                <div class="col mb-3">
+                    <label for="disabledTextInput" class="form-label">DESCRICAO</label>
+                    <input type="text" id="disabledTextInput" name="descricao" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="disabledTextInput" class="form-label">DATA DO EVENTO</label>
+                    <input type="date" id="disabledTextInput" name="data_evento" class="form-control" required>
+                </div>
+                <div class="col mb-3">
+                    <label for="disabledTextInput" class="form-label">CIDADE</label>
+                    <input type="text" id="disabledTextInput" name="cidade" class="form-control" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disabledTextInput" class="form-label">ENDEREÇO</label>
+                <input type="text" name="endereco" id="disabledTextInput" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Salvar</button>
+
+        </fieldset>
+    </form>
+</div>

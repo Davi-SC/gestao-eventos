@@ -1,0 +1,51 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand text-white mb-0 h1">
+            <a href="/" class="text-decoration-none text-black">
+                <img src="/img/logo.png" alt="Logo" width="150" height="80">
+            </a>
+        </span>
+
+        <nav class="navbar navbar-expand-lg">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="/" class="nav-link text-white">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white">Quem Somos</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="dropdown">
+            <button style="height: 50px;" class="btn btn-outline-light dropdown-toggle" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user p-2"></i>Usuario
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a href="/admin" class="dropdown-item">
+                        <i class="fa-regular fa-id-card"></i> Perfil
+                    </a>
+                </li>
+                <li>
+                    <a href="/pessoa/cadastrar" class="dropdown-item">
+                        <i class="fa-regular fa-id-card"></i> Cadastro
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/usuario/login">
+                        <i class="fa-solid fa-key"></i> Login
+                    </a>
+                </li>
+
+                <div class="dropdown-divider"></div>
+                <li>
+                    <a class="dropdown-item" href="/usuario/logout"><i class="fa-solid fa-right-from-bracket"></i>
+                        Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
